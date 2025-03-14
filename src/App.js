@@ -9,7 +9,7 @@ function App() {
     justifyContent: "center",
     alignItems: "center",
     color: "#fff",
-    margin: "50px",
+    padding: "50px",
   };
 
   return (
