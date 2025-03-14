@@ -21,7 +21,7 @@ const Button = () => {
   };
 
   return (
-    <button style={buttonStyle}>
+    <button style={buttonStyle} type="button" aria-label="Timer Button">
       <span style={iconStyle}>&#9654;</span>
     </button>
   );
