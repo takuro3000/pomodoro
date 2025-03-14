@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = () => {
+const Button = ({ onClick }) => {
   const buttonStyle = {
     width: "80px",
     height: "80px",
@@ -21,7 +21,12 @@ const Button = () => {
   };
 
   return (
-    <button style={buttonStyle} type="button" aria-label="Timer Button">
+    <button
+      style={buttonStyle}
+      type="button"
+      aria-label="Timer Button"
+      onClick={onClick}
+    >
       <span style={iconStyle}>&#9654;</span>
     </button>
   );
