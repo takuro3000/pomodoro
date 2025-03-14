@@ -24,7 +24,7 @@ function App() {
   return (
     <div style={appStyle}>
       <Timer isTimerRunning={isTimerRunning} />
-      <Button onClick={handleStartTimer} />
+      <Button onClick={handleStartTimer} isTimerRunning={isTimerRunning} />
     </div>
   );
 }

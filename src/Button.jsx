@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ onClick }) => {
+const Button = ({ onClick, isTimerRunning }) => {
   const buttonStyle = {
     width: "80px",
     height: "80px",
@@ -20,6 +20,8 @@ const Button = ({ onClick }) => {
     color: "#fff",
   };
 
+  const icon = isTimerRunning ? "\u23F9" : "\u25B6";
+
   return (
     <button
       style={buttonStyle}
@@ -27,7 +29,7 @@ const Button = ({ onClick }) => {
       aria-label="Timer Button"
       onClick={onClick}
     >
-      <span style={iconStyle}>&#9654;</span>
+      <span style={iconStyle}>{icon}</span>
     </button>
   );
 };
