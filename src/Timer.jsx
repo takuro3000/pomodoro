@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const Timer = ({ isTimerRunning }) => {
+const Timer = ({ timeLeft }) => {
   const timerContainer = {
     width: "400px",
     height: "400px",
@@ -17,21 +17,6 @@ const Timer = ({ isTimerRunning }) => {
     fontSize: "4rem",
     fontWeight: "bold",
   };
-
-  const [timeLeft, setTimeLeft] = useState(1500);
-
-  useEffect(() => {
-    // タイマーが停止中の場合、またはタイムアップの場合は何もしない
-    if (!isTimerRunning || timeLeft === 0) return;
-
-    // 1秒ごとにカウントダウン
-    const intervalId = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime - 1);
-    }, 1000);
-
-    // コンポーネントのアンマウント時にインターバルをクリア
-    return () => clearInterval(intervalId);
-  }, [isTimerRunning, timeLeft]);
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
