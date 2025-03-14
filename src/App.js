@@ -22,9 +22,10 @@ function App() {
   // ボタンのクリック時の処理：タイマーが動作中なら停止＆リセット、停止中なら開始
   const handleButtonClick = () => {
     if (isTimerRunning) {
-      // 停止中の場合、タイマーを停止してリセット
-      setIsTimerRunning(false);
-      setTimeLeft(1500);
+      if (window.confirm("今日のポモドーロは終了しますか？")) {
+        setIsTimerRunning(false);
+        setTimeLeft(1500);
+      }
     } else {
       // 開始する場合
       setIsTimerRunning(true);
