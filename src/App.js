@@ -7,7 +7,6 @@ import phases from "./phases";
 function App() {
   const [currentPhaseIndex, setCurrentPhaseIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(phases[0].duration);
-  // タイマーが動作中かどうかの状態を管理
   const [isTimerRunning, setIsTimerRunning] = useState(false);
 
   useEffect(() => {
@@ -29,14 +28,12 @@ function App() {
         setCurrentPhaseIndex(nextPhaseIndex);
         setTimeLeft(phases[nextPhaseIndex].duration);
       } else {
-        // 最終フェーズ終了後、初期状態（Work 1）に戻す
         setCurrentPhaseIndex(0);
         setTimeLeft(phases[0].duration);
       }
     }
   }, [timeLeft, isTimerRunning, currentPhaseIndex]);
 
-  // ボタンのクリック時の処理：タイマーが動作中なら停止＆リセット、停止中なら開始
   const handleButtonClick = () => {
     if (isTimerRunning) {
       if (window.confirm("今日のポモドーロは終了しますか？")) {
@@ -45,7 +42,6 @@ function App() {
         setTimeLeft(phases[0].duration);
       }
     } else {
-      // 開始する場合
       setIsTimerRunning(true);
     }
   };
