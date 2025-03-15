@@ -21,14 +21,15 @@ function App() {
   // タイマーが動作中かどうかの状態を管理
   const [isTimerRunning, setIsTimerRunning] = useState(false);
 
-  // タイマーのカウントダウン処理（1秒ごとに減少）
   useEffect(() => {
-    if (isTimerRunning && timeLeft > 0) {
-      const intervalId = setInterval(() => {
-        setTimeLeft((prevTime) => prevTime - 1);
-      }, 1000);
-      return () => clearInterval(intervalId);
-    }
+    if (!isTimerRunning) return;
+    if (timeLeft === 0) return;
+
+    const timeoutId = setTimeout(() => {
+      setTimeLeft((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
   }, [isTimerRunning, timeLeft]);
 
   // timeLeft が 0 になった場合、次のフェーズへ切り替える
