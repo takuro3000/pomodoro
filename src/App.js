@@ -40,8 +40,9 @@ function App() {
         setCurrentPhaseIndex(nextPhaseIndex);
         setTimeLeft(phases[nextPhaseIndex].duration);
       } else {
-        // すべてのフェーズが終了したらタイマー停止
-        setIsTimerRunning(false);
+        // 最終フェーズ終了後、初期状態（Work 1）に戻す
+        setCurrentPhaseIndex(0);
+        setTimeLeft(phases[0].duration);
       }
     }
   }, [timeLeft, isTimerRunning, currentPhaseIndex]);
