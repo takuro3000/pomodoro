@@ -1,6 +1,6 @@
 import React from "react";
 
-const Timer = () => {
+const Timer = ({ timeLeft }) => {
   const timerContainer = {
     width: "400px",
     height: "400px",
@@ -18,9 +18,14 @@ const Timer = () => {
     fontWeight: "bold",
   };
 
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+
   return (
     <div style={timerContainer}>
-      <div style={timeText}>25:00</div>
+      <div style={timeText}>{`${minutes.toString().padStart(2, "0")}:${seconds
+        .toString()
+        .padStart(2, "0")}`}</div>
     </div>
   );
 };
