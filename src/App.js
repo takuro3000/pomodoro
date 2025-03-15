@@ -23,13 +23,12 @@ function App() {
 
   // タイマーのカウントダウン処理（1秒ごとに減少）
   useEffect(() => {
-    let intervalId;
     if (isTimerRunning && timeLeft > 0) {
-      intervalId = setInterval(() => {
+      const intervalId = setInterval(() => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
+      return () => clearInterval(intervalId);
     }
-    return () => clearInterval(intervalId);
   }, [isTimerRunning, timeLeft]);
 
   // timeLeft が 0 になった場合、次のフェーズへ切り替える
